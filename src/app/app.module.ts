@@ -11,6 +11,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { CounterComponent } from './counter/counter.component';
 import { HomeComponent } from './home/home.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { CountriesComponent } from './countries/countries.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CountryPopulationComponent } from './countries/country-population.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     NavMenuComponent,
     CounterComponent,
     HomeComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    CountriesComponent,
+    CountryPopulationComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +31,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
-
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
