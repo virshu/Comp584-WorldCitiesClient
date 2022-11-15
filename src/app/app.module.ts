@@ -8,12 +8,14 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 import { CounterComponent } from './counter/counter.component';
 import { HomeComponent } from './home/home.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CountriesComponent } from './countries/countries.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CountryPopulationComponent } from './countries/country-population.component';
+import { LoginComponent } from './auth/login.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,9 @@ import { CountryPopulationComponent } from './countries/country-population.compo
     NavMenuComponent,
     CounterComponent,
     HomeComponent,
-    FetchDataComponent,
     CountriesComponent,
-    CountryPopulationComponent
+    CountryPopulationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +33,8 @@ import { CountryPopulationComponent } from './countries/country-population.compo
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
     HttpClientModule
   ],
   providers: [],
