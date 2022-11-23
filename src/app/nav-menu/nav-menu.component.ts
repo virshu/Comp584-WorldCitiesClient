@@ -1,25 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',
   styleUrls: ['./nav-menu.component.css']
 })
-export class NavMenuComponent implements OnInit {
-  isExpanded = false;
+export class NavMenuComponent implements OnInit, OnDestroy {
+  isLoggedIn: boolean = false;
+  private destroySubject = new Subject();
 
+  constructor(private authService: AuthService,  private router: Router) {
+    this.authService.authStatus
+    .pipe(takeUntil(this.destroySubject))
+    .subscribe(result => {
+      this.isLoggedIn = result;
+    });
+  }
 
-  constructor() { }
+  onLogout() {
+    this.authService.logout();
+    this.router.navigate(["/"]);
+  }
+
+  ngOnDestroy(): void {
+    this.destroySubject.next(true);
+    this.destroySubject.complete();
+  }
 
   ngOnInit(): void {
-  }
-
-  collapse() {
-    this.isExpanded = false;
-  }
-
-  toggle() {
-    this.isExpanded = !this.isExpanded;
+    this.isLoggedIn = this.authService.isAuthenticated();
   }
 
 }
