@@ -1,0 +1,26 @@
+<h1>Cities</h1>
+<p>Here's a list of cities: feel free to play with it.</p>
+<p *ngIf="!cities"><em>Loading...</em></p>
+<button mat-flat-button color="primary" class="btn-add" *ngIf="cities" [routerLink]="['/city-edit']">
+  Add a new City
+</button>
+<table class='table table-striped' aria-labelledby="tableLabel" [hidden]="!cities">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Lattitude</th>
+      <th>Longitude</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let city of cities">
+      <td><a [routerLink]="['/city-edit', city.id]">{{city.id}}</a></td>
+      <td>{{ city.name }}</td>
+      <td>{{ city.lattitude }}</td>
+      <td>{{ city.longitude }}</td>
+      <td>{{ city.countryName }}</td>
+    </tr>
+  </tbody>
+</table>

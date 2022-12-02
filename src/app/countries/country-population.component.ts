@@ -11,7 +11,7 @@ import { CountryPopulation } from './Country';
 })
 export class CountryPopulationComponent implements OnInit {
   id?:number;
-  countryPopulation!: CountryPopulation;
+  countryPopulation?: CountryPopulation;
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient) {
    }
 
